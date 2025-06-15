@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>DiZZystore</title>
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- page‑specific helpers -->
+    <style>
+      /* hide WebKit scrollbar for the horizontal product rail */
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+      .scrollbar-hide            { -ms-overflow-style:none; scrollbar-width:none; }
+
+      /* nuke stubborn native focus rings (Chrome / Edge / Firefox) */
+      input:focus-visible,
+      button:focus-visible { outline: none !important; }
+    </style>
+  </head>
+
+  <body
+    class="relative min-h-screen flex flex-col bg-[#fbf9f9] overflow-x-hidden"
+    style='font-family:"Plus Jakarta Sans","Noto Sans",sans-serif;'
+  >
+    <!-- =========  NAVBAR  ========= -->
+    <header
+      class="flex items-center justify-between border-b border-[#f1e9ea] px-10 py-3"
+    >
+      <!-- logo + links -->
+      <div class="flex items-center gap-8">
+        <div class="flex items-center gap-4 text-[#191011]">
+          <svg class="size-4" viewBox="0 0 48 48" fill="none">
+            <path
+              d="M42.44 44S36.07 33.9 41.17 24 42.21 4 42.21 4H7.01s4.65 8.93-1.03 20C0.88 33.9 7.27 44 7.27 44h35.17Z"
+              fill="currentColor"
+            />
+          </svg>
+          <h2 class="text-lg font-bold tracking-tight">DiZZystore</h2>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-9">
+          <a class="text-sm font-medium" href="#">Home</a>
+         
+          <a class="text-sm font-medium" href="dis.html">Disclaimer</a>
+        </nav>
+      </div>
+    </header>
+    <!-- /navbar -->
+
+    <!-- =========  HERO  ========= -->
+    <section class="px-6 md:px-40 py-6 flex justify-center">
+      <div class="max-w-[960px] w-full">
+        <div
+          class="flex flex-col items-center justify-center gap-6 p-6 min-h-[480px] rounded-xl bg-cover bg-center"
+          style='background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.4)),url("https://lh3.googleusercontent.com/aida-public/AB6AXuA-mHci-uDLpgOHg_8aqe6aCz0FAXi98nLv9MyNIrfqw0oNjIIMU1W3FhTrkF2mQdOLgwTbaVihsmqO63MsLNNQxHAB0GfFE9Zm0HJkRHeoXwjOcTfQ0r5-uZkADEAwBnMOZ-PJAnQvV0XKzMKB-KQi2CVz-tytz3GcwtyiAUX9SXRT7w1GboXHJoaqGUk7q6xD4WhvS2lD8Ke0tTL4BlS1tYt3sq4JrXn-xHvyxAOk04rI55MpoyQodt4T781nu_kEibrRokv0SA4");'
+        >
+          <h1
+            class="text-white text-4xl md:text-5xl font-black text-center tracking-tight"
+          >
+            Discover the Best Deals on Quality Products
+          </h1>
+          <p class="text-white text-sm md:text-base text-center max-w-xl">
+            Explore our curated selection of top‑rated items and enjoy exclusive
+            discounts.
+          </p>
+
+          <!-- HERO SEARCH -->
+          <form
+            id="hero-search"
+            class="group relative w-full max-w-[480px]"
+            onsubmit="event.preventDefault(); document.querySelector('.js-search-btn').click();"
+          >
+            <!-- magnifier -->
+            <svg
+              class="absolute left-4 top-1/2 -translate-y-1/2 text-[#8b5b5d] pointer-events-none"
+              width="20"
+              height="20"
+              fill="currentColor"
+              viewBox="0 0 256 256"
+            >
+              <path
+                d="M229.66 218.34 179.6 168.28a88 88 0 1 0-11.31 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32ZM40 112a72 72 0 1 1 72 72 72.08 72.08 0 0 1-72-72Z"
+              />
+            </svg>
+
+            <!-- input -->
+            <input
+              type="search"
+              placeholder="Search for products"
+              class="js-search-input peer h-14 md:h-16 w-full rounded-full bg-[#fbf9f9] border border-[#e3d4d5]
+                     pl-12 pr-[7.5rem] md:pr-[8rem] text-sm md:text-base placeholder-[#8b5b5d] text-[#191011]
+                     focus:outline-none focus:ring-3 focus:ring-[#e8b4b7]/40 focus:border-[#e8b4b7] transition"
+            />
+
+            <!-- button -->
+            <button
+              type="button"
+              class="js-search-btn absolute right-1.5 top-1/2 -translate-y-1/2 h-11 md:h-12 px-6 md:px-7 rounded-full
+                     bg-[#e8b4b7] text-[#191011] text-sm md:text-base font-semibold
+                     hover:bg-[#e8b4b7]/90 active:scale-95
+                     focus:outline-none focus:ring-3 focus:ring-[#e8b4b7]/50 transition"
+            >
+              Search
+            </button>
+          </form>
+          <!-- /hero search -->
+        </div>
+
+        <!-- =========  FEATURED  ========= -->
+        <h2 class="text-[22px] font-bold mt-8 mb-3 px-2">Featured Products</h2>
+
+        <div
+          id="product-wrapper"
+          class="flex overflow-x-auto scrollbar-hide py-4 px-2 gap-3"
+        >
+          <!-- product cards (duplicate/replace as needed) -->
+          <a
+            href="#"
+            data-url="https://your-affiliate-link-1.com"
+            data-name="Cozy Living Room Set"
+            class="product-card flex flex-col gap-4 min-w-60"
+          >
+            <div
+              class="aspect-square bg-cover bg-center rounded-xl"
+              style='background-image:url("https://lh3.googleusercontent.com/aida-public/AB6AXuBN86I4rz_CMrt8ds7GKbUx1rzzkVHRLeA7ioFUigDwTEqM3rV0EopobiLY97N6YWYuvIDkVPCVpmEaoUUb6fJ-Fs1Hx3wi92GyR28v1Fo57qXPmhyfKKeXGxxPV1DVI1K84o8z7qEHDY98U16ISzF6xDrf57cSElhk9iL7Wk0JR9wEmZT5BUzjgSVI-TiRggvzh2m5sXXOWhDceiCaaawUtugXNoOkBIhbXDOiEteozY0MMo4e-pYbpkeNMy0gny2GRsTlbVLFZdg");'
+            ></div>
+            <div>
+              <p class="font-medium">Cozy Living Room Set</p>
+              <p class="text-sm text-[#8b5b5d]">
+                Transform your living space with this stylish sofa set.
+              </p>
+            </div>
+          </a>
+
+          <a
+            href="#"
+            data-url="https://your-affiliate-link-2.com"
+            data-name="Modern Dining Table"
+            class="product-card flex flex-col gap-4 min-w-60"
+          >
+            <div
+              class="aspect-square bg-cover bg-center rounded-xl"
+              style='background-image:url("https://lh3.googleusercontent.com/aida-public/AB6AXuAd0OP0XsUZyZxW-T_nSpcsPPBNp1ng2Y1xDlGrwiKOlzD_xokSnTIPUaMIBVfAzuVFoS-_fmGVoJ4W--eQPQIRK1uBzXAMKrg4N2spEfOwq89wPhu7Ql9pMUaSu4vALIrE92olil-Yb9tJJQBR2I4qf2IT092F8MMk61dsujLcK_WS37VL-snrOmjNYJKC0RxSAt5Vx36bT9WUmL4IVc-ksIiX3URe6vC4y4n5LUaJWm-qzd0S7CyBNvFT2oT2d_JnNWp8tZ6xgM8");'
+            ></div>
+            <div>
+              <p class="font-medium">Modern Dining Table</p>
+              <p class="text-sm text-[#8b5b5d]">
+                Upgrade your dining area with this sleek table.
+              </p>
+            </div>
+          </a>
+
+          <a
+            href="#"
+            data-url="https://your-affiliate-link-3.com"
+            data-name="Luxury Bedding Collection"
+            class="product-card flex flex-col gap-4 min-w-60"
+          >
+            <div
+              class="aspect-square bg-cover bg-center rounded-xl"
+              style='background-image:url("https://lh3.googleusercontent.com/aida-public/AB6AXuDGzfGJG1BQG3O9VHNs8Ge3b0UKI1XfrjCPwDrEbD_uJll2MSzgl6Do18u5_o7YWkT3nntb5B56jh0fayaceW0ZX4oCbKwh0oJeSLLvsNolBHLFy-spicRguDnXlkHKrRQGghDbKdCVKNDVB7RcbCzz2skviHEYq56bvpplUj16zxvXnzP7FdZgC6RhkwFwsBLkQJVegYICgkAlAt9XAsBWRz7hkRcAp5KkIjiAl5Pb2brz0z1W_fWTeKxuL7EpdKd9O9nLVZlj2E");'
+            ></div>
+            <div>
+              <p class="font-medium">Luxury Bedding Collection</p>
+              <p class="text-sm text-[#8b5b5d]">
+                Experience comfort with our premium bedding.
+              </p>
+            </div>
+          </a>
+
+          <a
+            href="#"
+            data-url="https://your-affiliate-link-4.com"
+            data-name="Designer Armchair"
+            class="product-card flex flex-col gap-4 min-w-60"
+          >
+            <div
+              class="aspect-square bg-cover bg-center rounded-xl"
+              style='background-image:url("https://lh3.googleusercontent.com/aida-public/AB6AXuCwLVRBehqLh5f8Jy02gwrHCL3ST9fRwAPuOXV4xNTa5BIsw43kB1h-0-N3ZSrSCOPueNecbihO066fMux-2iVYDEIM7kvWfzRXk_hyTC420arVCG1a-5XBgQy4ZvRZm-AbgWqLBP10ljKoUZRSAAsQf-lmTGjGozk4yp3u_K9-ZSA-Rzj6wrkIGyNHyEWbowKN59KpdxvlLIFA6H9WzZ2k0Ts3UlqTrK1sCq-95J-yjHir_R9s3MTWdgWyMdQfe1IR5DJOcprEVpI");'
+            ></div>
+            <div>
+              <p class="font-medium">Designer Armchair</p>
+              <p class="text-sm text-[#8b5b5d]">
+                Add elegance with this beautiful armchair.
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- /hero + featured -->
+
+    <!-- =========  SCRIPTS  ========= -->
+    <script>
+      /* ---------- affiliate redirect ---------- */
+      document.querySelectorAll(".product-card").forEach((card) => {
+        card.addEventListener("click", (e) => {
+          e.preventDefault();               // stay on page
+          const url = card.dataset.url;
+          if (url) window.open(url, "_blank");
+        });
+      });
+
+      /* ---------- live search / filter ---------- */
+      const inputs  = document.querySelectorAll(".js-search-input");
+      const cards   = Array.from(document.querySelectorAll(".product-card"));
+      const buttons = document.querySelectorAll(".js-search-btn");
+
+      function filter(query) {
+        const q = query.trim().toLowerCase();
+        cards.forEach((card) => {
+          const name = (card.dataset.name || "").toLowerCase();
+          card.style.display = q && !name.includes(q) ? "none" : "flex";
+        });
+      }
+
+      // type‑as‑you‑go
+      inputs.forEach((inp) =>
+        inp.addEventListener("input", () => filter(inp.value))
+      );
+
+      // Search button
+      buttons.forEach((btn) =>
+        btn.addEventListener("click", () => {
+          const val = btn
+            .closest("form")
+            .querySelector(".js-search-input").value;
+          filter(val);
+        })
+      );
+    </script>
+  </body>
+</html>
